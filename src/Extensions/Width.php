@@ -20,10 +20,10 @@ class Width extends DataExtension
     public function updateCMSFields(FieldList $fields)
     {
         $layoutService = LayoutService::create();
-        $fields->addFieldsToTab('Root.Layout', [
+        $fields->addFieldsToTab('Root.' . _t('LayoutOptions.Layout', 'Layout'), [
             SelectionField::create(
                 'LayoutWidth',
-                _t('LayoutOptions.LayoutWidth', 'Layout Width'),
+                _t('LayoutOptions.Width', 'Width'),
                 $layoutService->getLayoutWidthOptions()
             ),
         ]);

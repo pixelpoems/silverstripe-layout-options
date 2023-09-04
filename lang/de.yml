@@ -1,0 +1,9 @@
+en:
+  LayoutOptions:
+    Layout: Layout
+    Background: Hintergrund
+    Text: Text
+    Width: Breite
+    Color: Farbe
+    HeadingTag: 'Überschrift Tag'
+    Alignment: Ausrichtung

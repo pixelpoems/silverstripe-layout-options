@@ -28,7 +28,7 @@ class Text extends DataExtension
         $layoutService = LayoutService::create();
 
         $fields->removeByName(['HeadingTag', 'TextColor', 'TextAlign']);
-        $fields->addFieldsToTab('Root.Layout', [
+        $fields->addFieldsToTab('Root.' . _t('LayoutOptions.Layout', 'Layout'), [
             CompositeField::create(
                 SelectionField::create(
                     'HeadingTag',

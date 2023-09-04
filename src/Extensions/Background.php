@@ -22,7 +22,7 @@ class Background extends DataExtension
     {
         $layoutService = LayoutService::create();
         $fields->removeByName(['BackgroundColor']);
-        $fields->addFieldsToTab('Root.Layout', [
+        $fields->addFieldsToTab('Root.' . _t('LayoutOptions.Layout', 'Layout'), [
             CompositeField::create(
                 ColorPaletteField::create(
                     'BackgroundColor',

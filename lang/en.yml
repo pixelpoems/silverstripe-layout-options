@@ -1,0 +1,9 @@
+en:
+  LayoutOptions:
+    Layout: Layout
+    Background: Background
+    Text: Text
+    Width: Width
+    Color: Color
+    HeadingTag: 'Heading Tag'
+    Alignment: Alignment
