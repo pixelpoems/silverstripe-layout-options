@@ -59,16 +59,19 @@ class LayoutService extends Controller
             'left' => [
                 'Value' => 'left',
                 'Title' => _t('LayoutOptions.Left', "Left"),
+                'ShowTitle' => true,
                 'Icon' => 'align-left'
             ],
             'center' => [
                 'Value' => 'center',
                 'Title' => _t('LayoutOptions.Center', "Center"),
+                'ShowTitle' => true,
                 'Icon' => 'align-center'
             ],
             'right' => [
                 'Value' => 'right',
                 'Title' => _t('LayoutOptions.Right', "Right"),
+                'ShowTitle' => true,
                 'Icon' => 'align-right'
             ],
         ];
@@ -87,17 +90,20 @@ class LayoutService extends Controller
             'small' => [
                 'Value' => 'small',
                 'Title' => _t('LayoutOptions.Small', "Small"),
-                'Icon' => 'smartphone'
+                'ShowTitle' => true,
+                'Content' => 'S'
             ],
-            'default' => [
-                'Value' => 'default',
-                'Title' => _t('LayoutOptions.Default', "Default"),
-                'Icon' => 'tablet'
+            'medium' => [
+                'Value' => 'medium',
+                'Title' => _t('LayoutOptions.Medium', "Medium"),
+                'ShowTitle' => true,
+                'Content' => 'M'
             ],
-            'wide' => [
-                'Value' => 'wide',
-                'Title' => _t('LayoutOptions.Wide', "Wide"),
-                'Icon' => 'credit-card'
+            'large' => [
+                'Value' => 'large',
+                'Title' => _t('LayoutOptions.Large', "Large"),
+                'ShowTitle' => true,
+                'Content' => 'L'
             ],
         ];
 

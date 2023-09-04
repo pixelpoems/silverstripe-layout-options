@@ -14,7 +14,7 @@ class Width extends DataExtension
     ];
 
     private static $defaults = [
-        'LayoutWidth' => 'default'
+        'LayoutWidth' => 'medium'
     ];
 
     public function updateCMSFields(FieldList $fields)

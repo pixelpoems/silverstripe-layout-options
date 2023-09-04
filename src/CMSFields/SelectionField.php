@@ -27,16 +27,19 @@ use SilverStripe\View\Requirements;
  *         'left' => [
  *             'Value' => 'left',
  *             'Title' => _t('LayoutOptions.Left', "Left"),
+ *             'ShowTitle' => true,
  *             'Icon' => 'align-left'
  *         ],
  *         'center' => [
  *             'Value' => 'center',
  *             'Title' => _t('LayoutOptions.Center', "Center"),
+ *             'ShowTitle' => true,
  *             'Icon' => 'align-center'
  *         ],
  *         'right' => [
  *             'Value' => 'right',
  *             'Title' => _t('LayoutOptions.Right', "Right"),
+ *             'ShowTitle' => true,
  *             'Icon' => 'align-right'
  *         ],
  *    $value = "left"
@@ -47,10 +50,19 @@ use SilverStripe\View\Requirements;
  * https://github.com/feathericons/feather/tree/main/icons
  *
  * If no Icon is defined within the array, the box will display the title!
+ * You can define an alternative box content when you define "Content" within Options:
+ * <code>
+ * 'medium' => [
+ *     'Value' => 'medium',
+ *     'Title' => _t('LayoutOptions.Medium', "Medium"),
+ *     'ShowTitle' => true,
+ *     'Content' => 'M'
+ * ],
+ * </code>
 */
 class SelectionField extends SingleSelectField
 {
-    protected function getFieldOption($value, $title, $odd, $icon = null)
+    protected function getFieldOption($value, $title, $odd, $showTitle, $icon = null, $content = null)
     {
         return new ArrayData([
             'ID' => $this->getOptionID($value),
@@ -59,7 +71,9 @@ class SelectionField extends SingleSelectField
             'Name' => $this->getOptionName(),
             'Value' => $value,
             'Title' => $title,
+            'ShowTitle' => $showTitle,
             'Icon' => $icon,
+            'Content' => $content,
             'isChecked' => $this->isSelectedValue($value, $this->Value()),
             'isDisabled' => $this->isDisabledValue($value)
         ]);
@@ -112,7 +126,9 @@ class SelectionField extends SingleSelectField
         foreach ($this->getSourceEmpty() as $item) {
             $odd = !$odd;
             $icon = $item['Icon'] ?? null;
-            $options[] = $this->getFieldOption($item['Value'], $item['Title'], $odd, $icon);
+            $content = $item['Content'] ?? null;
+            $showTitle = $item['ShowTitle'] ?? false;
+            $options[] = $this->getFieldOption($item['Value'], $item['Title'], $odd, $showTitle, $icon, $content);
         }
 
         $properties = array_merge($properties, [
