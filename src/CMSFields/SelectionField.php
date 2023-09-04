@@ -6,8 +6,6 @@ use SilverStripe\Core\Convert;
 use SilverStripe\Forms\FormField;
 use SilverStripe\Forms\SingleSelectField;
 use SilverStripe\ORM\ArrayList;
-use SilverStripe\ORM\FieldType\DBField;
-use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
 
@@ -26,21 +24,21 @@ use SilverStripe\View\Requirements;
  *    $name = "Foobar",
  *    $title = "FooBar's selection",
  *    $source = [
-         * 'left' => [
-             * 'Value' => 'left',
-             * 'Title' => _t('LayoutOptions.Left', "Left"),
-             * 'Icon' => 'align-left'
-         * ],
-         * 'center' => [
-             * 'Value' => 'center',
-             * 'Title' => _t('LayoutOptions.Center', "Center"),
-             * 'Icon' => 'align-center'
-         * ],
-         * 'right' => [
-             * 'Value' => 'right',
-             * 'Title' => _t('LayoutOptions.Right', "Right"),
-             * 'Icon' => 'align-right'
-         * ],
+ *         'left' => [
+ *             'Value' => 'left',
+ *             'Title' => _t('LayoutOptions.Left', "Left"),
+ *             'Icon' => 'align-left'
+ *         ],
+ *         'center' => [
+ *             'Value' => 'center',
+ *             'Title' => _t('LayoutOptions.Center', "Center"),
+ *             'Icon' => 'align-center'
+ *         ],
+ *         'right' => [
+ *             'Value' => 'right',
+ *             'Title' => _t('LayoutOptions.Right', "Right"),
+ *             'Icon' => 'align-right'
+ *         ],
  *    $value = "left"
  * );
  * </code>
