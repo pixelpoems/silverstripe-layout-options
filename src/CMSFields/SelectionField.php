@@ -102,10 +102,10 @@ class SelectionField extends SingleSelectField
         return $oddClass . $valueClass;
     }
 
-    public function Field($properties = []): DBField|DBHTMLText
+    public function Field($properties = [])
     {
         Requirements::css('pixelpoems/silverstripe-layout-options:client/dist/css/selection-field.min.css');
-        Requirements::javascript('pixelpoems/silverstripe-layout-options:client/dist/javascript/feather.min.js');
+        Requirements::javascript('pixelpoems/silverstripe-layout-options:client/dist/javascript/selection-field.min.js');
 
         $options = [];
         $odd = false;

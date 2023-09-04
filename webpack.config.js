@@ -13,13 +13,10 @@ module.exports = {
     mode: 'production',
     target: 'web',
     entry: {
-        "selection-field": PATHS.SRC + '/scss/selection-field.scss',
-        "feather": PATHS.SRC + '/javascript/feather.js'
-        // "search": [
-        //     PATHS.SRC + '/javascript/search.js',
-        //     PATHS.SRC + '/scss/search.scss'
-        // ],
-        // "inline-search": PATHS.SRC + '/javascript/inline-search.js'
+        "selection-field": [
+            PATHS.SRC + '/scss/selection-field.scss',
+            PATHS.SRC + '/javascript/selection-field.js'
+        ]
     },
     output: {
         filename: 'javascript/[name].min.js',
