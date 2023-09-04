@@ -1,0 +1,7 @@
+---
+Name: silverstripe-search
+---
+
+#SilverStripe\Admin\LeftAndMain:
+#  extra_requirements_css:
+#    - '_resources/vendor/pixelpoems/silverstripe-layout-options/client/dist/css/cms.min.css'
