@@ -3,6 +3,7 @@
 namespace Pixelpoems\LayoutOptions\Extensions;
 
 use Heyday\ColorPalette\Fields\ColorPaletteField;
+use Pixelpoems\LayoutOptions\CMSFields\SelectionField;
 use Pixelpoems\LayoutOptions\Services\LayoutService;
 use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\FieldList;
@@ -10,11 +11,13 @@ use SilverStripe\ORM\DataExtension;
 
 class Background extends DataExtension
 {
-    private static $db = [
+    private static bool $hide_layout_option_background_color = false;
+
+    private static array $db = [
         'BackgroundColor' => 'Varchar',
     ];
 
-    private static $defaults = [
+    private static array $defaults = [
         'BackgroundColor' => 'white',
     ];
 
@@ -22,15 +25,27 @@ class Background extends DataExtension
     {
         $layoutService = LayoutService::create();
         $fields->removeByName(['BackgroundColor']);
-        $fields->addFieldsToTab('Root.' . _t('LayoutOptions.Layout', 'Layout'), [
-            CompositeField::create(
+        $displayField = false;
+
+        $compositeField = CompositeField::create()->setTitle(_t('LayoutOptions.Background', 'Background'));
+
+        if(!$this->owner->config()->get('hide_layout_option_background_color')) {
+            $compositeField->push(
                 ColorPaletteField::create(
                     'BackgroundColor',
                     _t('LayoutOptions.Color', 'Color'),
                     $layoutService->getBackgroundColorOptions()
                 )
-            )->setTitle(_t('LayoutOptions.Background', 'Background'))
-        ]);
+            );
+            $displayField = true;
+        }
+
+        if($displayField) {
+            $fields->addFieldToTab(
+                'Root.' . _t('LayoutOptions.Layout', 'Layout'),
+                $compositeField
+            );
+        }
         parent::updateCMSFields($fields);
     }
 

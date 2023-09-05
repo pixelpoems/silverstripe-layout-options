@@ -46,6 +46,16 @@ DNADesign\Elemental\Models\BaseElement:
 ```
 The fields will appear in the order the extensions are added within the yml config.
 
+Each entity can be hidden if they should not appeare e.g.:
+```yml
+Page:
+  hide_layout_option_heading_tag: true
+  hide_layout_option_text_color: true
+  hide_layout_option_text_align: true
+  hide_layout_option_background_color: true
+  hide_layout_option__width: true
+```
+
 ## Default Layout Options
 ### Text
 ![resources/example-text.png](resources/example-text.png)
