@@ -88,22 +88,22 @@ class LayoutService extends Controller
     {
         $options = [
             'small' => [
-                'Value' => 'small',
+                'Value' => 'sm',
                 'Title' => _t('LayoutOptions.Small', "Small"),
                 'ShowTitle' => true,
-                'Content' => 'S'
+                'Content' => 'SM'
             ],
             'medium' => [
-                'Value' => 'medium',
+                'Value' => 'base',
                 'Title' => _t('LayoutOptions.Medium', "Medium"),
                 'ShowTitle' => true,
                 'Content' => 'M'
             ],
             'large' => [
-                'Value' => 'large',
+                'Value' => 'lg',
                 'Title' => _t('LayoutOptions.Large', "Large"),
                 'ShowTitle' => true,
-                'Content' => 'L'
+                'Content' => 'LG'
             ],
         ];
 
