@@ -53,7 +53,7 @@ Page:
   hide_layout_option_text_color: true
   hide_layout_option_text_align: true
   hide_layout_option_background_color: true
-  hide_layout_option__width: true
+  hide_layout_option_width: true
 ```
 
 ## Default Layout Options
