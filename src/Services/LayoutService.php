@@ -30,7 +30,7 @@ class LayoutService extends Controller
             ],
         ];
 
-        $this->extend('updateAlignOptions', $options);
+        $this->extend('updateHeadingTagOptions', $options);
         return $options;
     }
 

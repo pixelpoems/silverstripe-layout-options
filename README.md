@@ -74,7 +74,7 @@ Pixelpoems\LayoutOptions\Services\LayoutService:
     - Namespace\YourLayoutServiceExtension
 ```
 ```php
-public function updateAlignOptions(&$options)
+public function updateHeadingTagOptions(&$options)
 {
     // Add an option
     $options['h5'] = [
