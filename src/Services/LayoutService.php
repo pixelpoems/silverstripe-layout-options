@@ -94,7 +94,7 @@ class LayoutService extends Controller
                 'Content' => 'SM'
             ],
             'medium' => [
-                'Value' => 'base',
+                'Value' => 'md',
                 'Title' => _t('LayoutOptions.Medium', "Medium"),
                 'ShowTitle' => true,
                 'Content' => 'M'
