@@ -18,7 +18,8 @@ This module provides extensions for layout options. The options can be attached 
 * Silverstripe CMS >=4.0
 * Silverstripe Framework >=4.0
 * Versioned Admin >=1.0
-* [Silverstripe Color Palette Field ^2.1](https://github.com/heyday/silverstripe-colorpalette)
+* Silverstripe Color Palette Field ^2.1
+* Silverstripe Selection Field ^1.0
 
 ## Installation
 ```
