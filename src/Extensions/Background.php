@@ -2,8 +2,8 @@
 
 namespace Pixelpoems\LayoutOptions\Extensions;
 
+use Pixelpoems\SelectionField\CMSFields\SelectionField;
 use Heyday\ColorPalette\Fields\ColorPaletteField;
-use Pixelpoems\LayoutOptions\CMSFields\SelectionField;
 use Pixelpoems\LayoutOptions\Services\LayoutService;
 use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\FieldList;
