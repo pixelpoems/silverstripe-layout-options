@@ -78,28 +78,28 @@ Pixelpoems\LayoutOptions\Services\LayoutService:
 To configure the options for the heading tag, text color, text align, background color and width, you can add config variables like this:
 ```yml
 Pixelpoems\LayoutOptions\Services\LayoutService:
-    heading_tag_options:
-      h2:
-        Value: 'h2'
-        Title: 'H2'
-    text_color_options:
-      white: '#fff'
-      black: '#000'
-    align_options:
-      left:
-        Value: 'left'
-        Title: 'Left'
-        ShowTitle: true
-        Icon: 'align-left'
-    layout_width_options:
-      small:
-        Value: 'small'
-        Title: 'Small'
-        ShowTitle: true
-        Content: 'S'
-    background_color_options:
-      white: '#fff'
-      black: '#000'
+  heading_tag_options:
+    h2:
+      Value: 'h2'
+      Title: 'H2'
+  text_color_options:
+    white: '#fff'
+    black: '#000'
+  align_options:
+    left:
+      Value: 'left'
+      Title: 'Left'
+      ShowTitle: true
+      Icon: 'align-left'
+  layout_width_options:
+    small:
+      Value: 'small'
+      Title: 'Small'
+      ShowTitle: true
+      Content: 'S'
+  background_color_options:
+    white: '#fff'
+    black: '#000'
 ```
 The options, which are configured in the yml file, will overwrite the default options!
 
