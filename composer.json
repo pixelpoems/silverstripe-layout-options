@@ -41,10 +41,7 @@
         "installer-name": "silverstripe-layout-options",
         "branch-alias": {
             "dev-main": "1.x-dev"
-        },
-        "expose": [
-            "client/dist/"
-        ]
+        }
     },
     "license": "BSD-3-Clause"
 }
