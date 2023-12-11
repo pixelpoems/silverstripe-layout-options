@@ -69,19 +69,19 @@ class LayoutService extends Controller
 
         if(!$options) {
             $options = [
-                'left' => [
+                'l' => [
                     'Value' => 'l',
                     'Title' => _t('LayoutOptions.Left', "Left"),
                     'ShowTitle' => true,
                     'Icon' => 'align-left'
                 ],
-                'center' => [
+                'c' => [
                     'Value' => 'c',
                     'Title' => _t('LayoutOptions.Center', "Center"),
                     'ShowTitle' => true,
                     'Icon' => 'align-center'
                 ],
-                'right' => [
+                'r' => [
                     'Value' => 'r',
                     'Title' => _t('LayoutOptions.Right', "Right"),
                     'ShowTitle' => true,
