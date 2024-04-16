@@ -8,10 +8,7 @@ This module provides extensions for layout options. The options can be attached 
 * [Configuration](#configuration)
 * [Default Layout Options](#default-layout-options)
 * [Update Options](#update-options)
-* [Usage of Selection Field](#usage-of-selection-field)
-* [Usage in Frontend](#usage-in-frontend)
 * [Reporting Issues](#reporting-issues)
-* [Credits](#credits)
 
 ## Requirements
 
@@ -165,69 +162,24 @@ public function updateBackgroundColorOptions(&$options)
 }
 ```
 
-## Usage of Selection Field
-Based on: `SilverStripe\Forms\OptionsetField` and `Heyday\ColorPalette\Fields\ColorPaletteField`
+## Holder Classes
+This module comes also with an extension of the DNADesign Elemental Base Element.
+This extension adds holder classes to the element. The holder classes are a combination of the layout options and a `el-classname` class. This holder class can be used to style the element in the frontend. The holder class is added to the holder div of the element.
+
+If you want to manipulate or add your custom layout classes to this holder class, you can use the following hook:
 ```php
-private static $db = [
-    'Alignment' => 'Varchar',
-];
-
-public function getCMSFields()
+// Extension of DNADesign\Elemental\Models\BaseElement
+public function updateHolderClasses(&$classes)
 {
-    $fields = parent::getCMSFields();
+    // Add a class
+    $classes[] = 'my-custom-class';
 
-    $fields->addFieldsToTab('Root.Main', [
+    // Add a class based on the layout options
+    $element = $this->owner;
+    if($element->NewLayoutOption) $holderClasses[] = 'abc--' . $element->NewLayoutOption;
 
-        SelectionField::create(
-           $name = 'Alignment',
-           $title = 'Alignment',
-           $source = [
-                'left' => [
-                    'Value' => 'left',
-                    'Title' => _t('LayoutOptions.Left', "Left"),
-                    'ShowTitle' => true,
-                    'Icon' => 'align-left'
-                ],
-                'center' => [
-                    'Value' => 'center',
-                    'Title' => _t('LayoutOptions.Center', "Center"),
-                    'ShowTitle' => true,
-                    'Icon' => 'align-center'
-                ],
-                'right' => [
-                    'Value' => 'right',
-                    'Title' => _t('LayoutOptions.Right', "Right"),
-                    'ShowTitle' => true,
-                    'Icon' => 'align-right'
-                ],
-                $value = 'left'
-        );
-
-    ]);
 }
 ```
-
-To display Icons you need to reference Feather Icons:
-https://github.com/feathericons/feather/tree/main/icons
-
-If no Icon is defined within the array, the box will display the title!
-You can define an alternative box content when you define "Content" within Options:
-```php
-'medium' => [
-    'Value' => 'medium',
-    'Title' => _t('LayoutOptions.Medium', 'Medium'),
-    'ShowTitle' => true,
-    'Content' => 'M'
-],
-```
-
-## Usage in Frontend
-TODO
-
 ## Reporting Issues
 Please [create an issue](https://github.com/pixelpoems/silverstripe-layout-options/issues) for any bugs you've found, or
 features you're missing.
-
-## Credits
-Icons from [Feather Icons](https://feathericons.com/) \
-Selection Field is based on [Heyday's Color Palette Field](https://github.com/heyday/silverstripe-colorpalette)

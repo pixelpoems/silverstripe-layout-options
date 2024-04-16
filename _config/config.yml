@@ -1,7 +1,23 @@
 ---
 Name: silverstripe-layout-options
 ---
-
 #SilverStripe\Admin\LeftAndMain:
 #  extra_requirements_css:
 #    - '_resources/vendor/pixelpoems/silverstripe-layout-options/client/dist/css/cms.min.css'
+
+
+---
+Only:
+  moduleexists: 'dnadesign/silverstripe-elemental'
+After:
+  - '#elemental'
+---
+## Needed to make sure the templates are loaded in the correct order
+SilverStripe\Core\Manifest\ModuleManifest:
+  module_priority:
+    - pixelpoems/silverstripe-layout-options
+
+## Add the extension to the BaseElement
+DNADesign\Elemental\Models\BaseElement:
+  extensions:
+    - Pixelpoems\LayoutOptions\Extensions\BaseElementExtension
