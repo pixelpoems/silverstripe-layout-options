@@ -21,7 +21,7 @@
         "silverstripe/cms": ">=4",
         "silverstripe/framework": ">=4",
         "silverstripe/vendor-plugin": ">=1",
-        "pixelpoems/silverstripe-selection-field": "^1.0.0"
+        "pixelpoems/silverstripe-selection-field": "^1.0.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7"
@@ -41,10 +41,7 @@
         "installer-name": "silverstripe-layout-options",
         "branch-alias": {
             "dev-main": "1.x-dev"
-        },
-        "expose": [
-            "client/dist/"
-        ]
+        }
     },
     "license": "BSD-3-Clause"
 }
