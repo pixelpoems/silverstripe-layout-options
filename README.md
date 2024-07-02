@@ -15,8 +15,8 @@ This module provides extensions for layout options. The options can be attached 
 * Silverstripe CMS >=4.0
 * Silverstripe Framework >=4.0
 * Versioned Admin >=1.0
-* Silverstripe Color Palette Field ^2.1
-* Silverstripe Selection Field ^1.0
+* [Silverstripe Color Palette Field ^2.1](https://github.com/heyday/silverstripe-colorpalette)
+* [Silverstripe Selection Field ^1.0](https://github.com/pixelpoems/silverstripe-selection-field)
 
 ## Installation
 ```
@@ -31,6 +31,7 @@ Page:
     - Pixelpoems\LayoutOptions\Extensions\Text
     - Pixelpoems\LayoutOptions\Extensions\Background
     - Pixelpoems\LayoutOptions\Extensions\Width
+    - Pixelpoems\LayoutOptions\Extensions\Image
 ```
 
 or Element (if you use Elemental form DNADesign e.g.):
@@ -41,10 +42,11 @@ DNADesign\Elemental\Models\BaseElement:
     - Pixelpoems\LayoutOptions\Extensions\Text
     - Pixelpoems\LayoutOptions\Extensions\Background
     - Pixelpoems\LayoutOptions\Extensions\Width
+    - Pixelpoems\LayoutOptions\Extensions\Image
 ```
 The fields will appear in the order the extensions are added within the yml config.
 
-Each entity can be hidden if they should not appeare e.g.:
+Each entity can be hidden if they should not appear e.g.:
 ```yml
 Page:
   hide_layout_option_heading_tag: true
@@ -52,6 +54,9 @@ Page:
   hide_layout_option_text_align: true
   hide_layout_option_background_color: true
   hide_layout_option_width: true
+  hide_layout_option_image_orientation: true
+  hide_layout_option_image_brightness: true
+  hide_layout_option_image_shape: true
 ```
 
 ## Default Layout Options
@@ -63,6 +68,9 @@ Page:
 
 ### Width
 ![resources/example-width.png](resources/example-width.png)
+
+### Image
+![resources/example-image.png](resources/example-image.png)
 
 ## Update Options
 For each option set, you can use a hook to update/expand the options from which the user can choose.
@@ -176,7 +184,7 @@ public function updateHolderClasses(&$classes)
 
     // Add a class based on the layout options
     $element = $this->owner;
-    if($element->NewLayoutOption) $holderClasses[] = 'abc--' . $element->NewLayoutOption;
+    if($element->NewLayoutOption && !$element->config()->get('hide_layout_option_new_layout_option'))) $holderClasses[] = 'abc--' . $element->NewLayoutOption;
 
 }
 ```

@@ -10,7 +10,7 @@ use SilverStripe\ORM\DataExtension;
 
 class Width extends DataExtension
 {
-    private static bool $hide_layout_option__width = false;
+    private static bool $hide_layout_option_width = false;
 
     private static array $db = [
         'LayoutWidth' => 'Varchar'
@@ -29,7 +29,7 @@ class Width extends DataExtension
 
         $compositeField = CompositeField::create()->setTitle(_t('LayoutOptions.Width', 'Width'));
 
-        if(!$this->owner->config()->get('hide_layout_option__width')) {
+        if(!$this->owner->config()->get('hide_layout_option_width')) {
             $compositeField->push(
                 SelectionField::create(
                     'LayoutWidth',
