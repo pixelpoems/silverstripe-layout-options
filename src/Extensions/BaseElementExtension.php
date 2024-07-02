@@ -42,10 +42,24 @@ class BaseElementExtension extends DataExtension
         }
 
         $holderClasses[] = 'el-' . $enName;
-        if($element->BackgroundColor) $holderClasses[] = 'bg--' . $element->BackgroundColor;
-        if($element->LayoutWidth) $holderClasses[] = 'w--' . $element->LayoutWidth;
-        if($element->TextAlign) $holderClasses[] = 'a' . $element->TextAlign;
-        if($element->TextColor) $holderClasses[] = 'tc--' . $element->TextColor;
+
+        // Adds the layout options to the holder classes when there is a value and the option is not hidden
+        // Background
+        if($element->BackgroundColor && !$element->config()->get('hide_layout_option_background_color')) $holderClasses[] = 'bg--' . $element->BackgroundColor;
+
+        // Width
+        if($element->LayoutWidth && !$element->config()->get('hide_layout_option__width')) $holderClasses[] = 'w--' . $element->LayoutWidth;
+
+        // Text
+        if($element->TextAlign && !$element->config()->get('hide_layout_option_text_align')) $holderClasses[] = 'a' . $element->TextAlign;
+        if($element->TextColor && !$element->config()->get('hide_layout_option_text_color')) $holderClasses[] = 'tc--' . $element->TextColor;
+
+        // Image
+        if($element->ImageOrientation && !$element->config()->get('hide_layout_option_image_orientation')) $holderClasses[] = 'io--' . $element->ImageOrientation;
+        if($element->ImageBrightness && !$element->config()->get('hide_layout_option_image_brightness')) $holderClasses[] = 'ib--' . $element->ImageBrightness;
+        if($element->ImageShape && !$element->config()->get('hide_layout_option_image_shape')) $holderClasses[] = 'is--' . $element->ImageShape;
+
+        // Adds the style variant and extra class to the holder classes
         if($element->getStyleVariant()) $holderClasses[] = $element->getStyleVariant();
         if($element->ExtraClass) $holderClasses[] = $element->ExtraClass;
 
