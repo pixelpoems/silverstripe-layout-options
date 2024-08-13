@@ -41,6 +41,7 @@ class BaseElementExtension extends DataExtension
             $enName = implode('', $name);
         }
 
+        $enName = str_replace(['/', '\\', '&'], '-', $enName);
         $holderClasses[] = 'el-' . $enName;
 
         // Adds the layout options to the holder classes when there is a value and the option is not hidden
