@@ -156,4 +156,68 @@ class LayoutService extends Controller
     {
         return $this->getBackgroundColorOptions()[$key];
     }
+
+
+    public function getImageOrientationOptions(): array
+    {
+        $options = [
+            'left' => [
+                'Value' => 'left',
+                'Title' => _t('LayoutOptions.Left', "Left"),
+                'ShowTitle' => true,
+                'Icon' => 'arrow-left'
+            ],
+            'right' => [
+                'Value' => 'right',
+                'Title' => _t('LayoutOptions.Right', "Right"),
+                'ShowTitle' => true,
+                'Icon' => 'arrow-right'
+            ],
+        ];
+
+        $this->extend('updateImageOrientationOptions', $options);
+
+        return $options;
+    }
+
+    public function getImageBrightnessOptions(): array
+    {
+       $options = [
+           'bright' => [
+               'Value' => 'bright',
+               'Title' => _t('LayoutOptions.ImageBright', "Bright"),
+               'ShowTitle' => true,
+               'Icon' => 'sun'
+           ],
+           'default' => [
+               'Value' => 'default',
+               'Title' => _t('LayoutOptions.ImageDefault', "Default"),
+               'ShowTitle' => true,
+               'Icon' => 'maximize'
+           ],
+           'dark' => [
+               'Value' => 'dark',
+               'Title' => _t('LayoutOptions.ImageDark', "Dark"),
+               'ShowTitle' => true,
+               'Icon' => 'moon'
+           ],
+       ];
+
+         $this->extend('updateImageBrightnessOptions', $options);
+        return $options;
+    }
+
+    public function getImageShapeOptions(): array
+    {
+        $options = [
+            'default' => 'Default',
+            'circle' => 'Circle',
+            'rectangle-horizontal' => 'Rectangle Horizontal',
+            'rectangle-vertical' => 'Rectangle Vertical',
+            'square' =>  'Square',
+        ];
+
+        $this->extend('updateImageShapeOptions', $options);
+        return $options;
+    }
 }

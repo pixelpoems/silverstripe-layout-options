@@ -2,6 +2,7 @@
 
 namespace Pixelpoems\LayoutOptions\Extensions;
 
+use Pixelpoems\LayoutOptions\Services\LayoutService;
 use Pixelpoems\SelectionField\CMSFields\SelectionField;
 use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\FieldList;
@@ -29,29 +30,19 @@ class Image extends DataExtension
 
     public function updateCMSFields(FieldList $fields)
     {
+        $layoutService = LayoutService::create();
+
         $fields->removeByName(['ImageOrientation', 'ImageBrightness', 'ImageShape']);
 
         $compositeField = CompositeField::create()->setTitle(_t('LayoutOptions.Image', 'Image'));
 
         if(!$this->owner->config()->get('hide_layout_option_image_orientation')) {
+
             $compositeField->push(
                 SelectionField::create(
                     'ImageOrientation',
                     _t('Layout.ImageOrientation', 'Orientation'),
-                    [
-                        'left' => [
-                            'Value' => 'left',
-                            'Title' => _t('LayoutOptions.Left', "Left"),
-                            'ShowTitle' => true,
-                            'Icon' => 'arrow-left'
-                        ],
-                        'right' => [
-                            'Value' => 'right',
-                            'Title' => _t('LayoutOptions.Right', "Right"),
-                            'ShowTitle' => true,
-                            'Icon' => 'arrow-right'
-                        ],
-                    ]
+                    $layoutService->getImageOrientationOptions()
                 ),
             );
         }
@@ -61,46 +52,24 @@ class Image extends DataExtension
                 SelectionField::create(
                     'ImageBrightness',
                     _t('Layout.ImageBrightness', 'Brightness'),
-                    [
-                        'bright' => [
-                            'Value' => 'bright',
-                            'Title' => _t('LayoutOptions.ImageBright', "Bright"),
-                            'ShowTitle' => true,
-                            'Icon' => 'sun'
-                        ],
-                        'default' => [
-                            'Value' => 'default',
-                            'Title' => _t('LayoutOptions.ImageDefault', "Default"),
-                            'ShowTitle' => true,
-                            'Icon' => 'maximize'
-                        ],
-                        'dark' => [
-                            'Value' => 'dark',
-                            'Title' => _t('LayoutOptions.ImageDark', "Dark"),
-                            'ShowTitle' => true,
-                            'Icon' => 'moon'
-                        ],
-                    ]
+                    $layoutService->getImageBrightnessOptions()
                 )
             );
         }
 
         if(!$this->owner->config()->get('hide_layout_option_image_shape')) {
             $compositeField->push(
-                OptionsetField::create('ImageShape', _t('Layout.ImageShape', 'Shape'), [
-                    'default' => 'Default',
-                    'circle' => 'Circle',
-                    'rectangle-horizontal' => 'Rectangle Horizontal',
-                    'rectangle-vertical' => 'Rectangle Vertical',
-                    'square' =>  'Square',
-                ]),
+                OptionsetField::create(
+                    'ImageShape',
+                    _t('Layout.ImageShape', 'Shape'),
+                    $layoutService->getImageShapeOptions(),
+                )
             );
         }
 
         $fields->addFieldsToTab('Root.' . _t('LayoutOptions.Layout', 'Layout'), [
             $compositeField
         ]);
-
 
         parent::updateCMSFields($fields);
     }
