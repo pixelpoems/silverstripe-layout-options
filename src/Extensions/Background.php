@@ -2,15 +2,15 @@
 
 namespace Pixelpoems\LayoutOptions\Extensions;
 
-use Pixelpoems\SelectionField\CMSFields\SelectionField;
+use SilverStripe\Core\Extension;
 use Heyday\ColorPalette\Fields\ColorPaletteField;
 use Pixelpoems\LayoutOptions\Services\LayoutService;
 use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\ORM\DataExtension;
 
-class Background extends DataExtension
+class Background extends Extension
 {
+    public $owner;
     private static bool $hide_layout_option_background_color = false;
 
     private static array $db = [
@@ -46,7 +46,7 @@ class Background extends DataExtension
                 $compositeField
             );
         }
-        parent::updateCMSFields($fields);
+
     }
 
     public function getBackgroundColorHEX(): string
@@ -55,6 +55,7 @@ class Background extends DataExtension
         if($this->owner->BackgroundColor) {
             return $layoutService->getSelectedBackgroundColor($this->owner->BackgroundColor) ?: '#fff';
         }
+
         return '#fff';
     }
 }

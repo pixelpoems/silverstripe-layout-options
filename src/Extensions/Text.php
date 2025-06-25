@@ -2,15 +2,16 @@
 
 namespace Pixelpoems\LayoutOptions\Extensions;
 
+use SilverStripe\Core\Extension;
 use Pixelpoems\SelectionField\CMSFields\SelectionField;
 use Heyday\ColorPalette\Fields\ColorPaletteField;
 use Pixelpoems\LayoutOptions\Services\LayoutService;
 use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\ORM\DataExtension;
 
-class Text extends DataExtension
+class Text extends Extension
 {
+    public $owner;
     private static bool $hide_layout_option_heading_tag = false;
 
     private static bool $hide_layout_option_text_color = false;
@@ -75,8 +76,5 @@ class Text extends DataExtension
                 $compositeField
             );
         }
-
-
-        parent::updateCMSFields($fields);
     }
 }

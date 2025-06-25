@@ -12,12 +12,22 @@ This module provides extensions for layout options. The options can be attached 
 
 ## Requirements
 
-* Silverstripe CMS ^4.0 || ^5.0
-* Silverstripe Framework ^4.0 || ^5.0
-* [Silverstripe Color Palette Field ^2.1](https://github.com/heyday/silverstripe-colorpalette)
-* [Silverstripe Selection Field ^1.0](https://github.com/pixelpoems/silverstripe-selection-field)
+* Silverstripe CMS ^6.0
+* Silverstripe Framework ^6.0
+* Silverstripe Color Palette Field with CMS6 Support => currently we use the fork of https://github.com/silverstripeltd/silverstripe-colorpalette/tree/pulls/cms6-support
+* [Silverstripe Selection Field ^2.0](https://github.com/pixelpoems/silverstripe-selection-field)
 
 ## Installation
+Currently because the dependencies of this module are not yet merged, you need to add the fork repository of the color palette field to your `composer.json` file:
+```json
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/silverstripeltd/silverstripe-colorpalette"
+    }
+]
+```
+
 ```
 composer require pixelpoems/silverstripe-layout-options
 ```

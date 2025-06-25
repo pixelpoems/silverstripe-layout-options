@@ -2,14 +2,15 @@
 
 namespace Pixelpoems\LayoutOptions\Extensions;
 
+use SilverStripe\Core\Extension;
 use Pixelpoems\SelectionField\CMSFields\SelectionField;
 use Pixelpoems\LayoutOptions\Services\LayoutService;
 use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\ORM\DataExtension;
 
-class Width extends DataExtension
+class Width extends Extension
 {
+    public $owner;
     private static bool $hide_layout_option_width = false;
 
     private static array $db = [
@@ -46,7 +47,5 @@ class Width extends DataExtension
                 $compositeField
             );
         }
-
-        parent::updateCMSFields($fields);
     }
 }

@@ -2,12 +2,13 @@
 
 namespace Pixelpoems\LayoutOptions\Extensions;
 
+use SilverStripe\Core\Extension;
 use SilverStripe\i18n\i18n;
-use SilverStripe\ORM\DataExtension;
 use TractorCow\Fluent\State\FluentState;
 
-class BaseElementExtension extends DataExtension
+class BaseElementExtension extends Extension
 {
+    public $owner;
     /**
      * To add additional classes to a specific element, add a method to the element class
      * e.g.:
@@ -25,7 +26,7 @@ class BaseElementExtension extends DataExtension
         $holderClasses = [];
         $element = $this->owner;
 
-        if(class_exists('TractorCow\Fluent\State\FluentState')) {
+        if(class_exists(FluentState::class)) {
             $enName =  FluentState::singleton()->withState(function(FluentState $state) use ($element) {
                 i18n::set_locale('en_001');
                 $name = $element->i18n_singular_name();
@@ -36,33 +37,50 @@ class BaseElementExtension extends DataExtension
         } else {
             i18n::set_locale('en_001');
             $name = $element->i18n_singular_name();
-            $name = strtolower($name);
+            $name = strtolower((string) $name);
             $name = explode(' ', $name);
             $enName = implode('', $name);
         }
 
         $enName = str_replace(['/', '\\', '&'], '-', $enName);
         $holderClasses[] = 'el-' . $enName;
-
         // Adds the layout options to the holder classes when there is a value and the option is not hidden
         // Background
-        if($element->BackgroundColor && !$element->config()->get('hide_layout_option_background_color')) $holderClasses[] = 'bg--' . $element->BackgroundColor;
-
+        if ($element->BackgroundColor && !$element->config()->get('hide_layout_option_background_color')) {
+            $holderClasses[] = 'bg--' . $element->BackgroundColor;
+        }
         // Width
-        if($element->LayoutWidth && !$element->config()->get('hide_layout_option__width')) $holderClasses[] = 'w--' . $element->LayoutWidth;
-
+        if ($element->LayoutWidth && !$element->config()->get('hide_layout_option__width')) {
+            $holderClasses[] = 'w--' . $element->LayoutWidth;
+        }
         // Text
-        if($element->TextAlign && !$element->config()->get('hide_layout_option_text_align')) $holderClasses[] = 'a' . $element->TextAlign;
-        if($element->TextColor && !$element->config()->get('hide_layout_option_text_color')) $holderClasses[] = 'tc--' . $element->TextColor;
+        if ($element->TextAlign && !$element->config()->get('hide_layout_option_text_align')) {
+            $holderClasses[] = 'a' . $element->TextAlign;
+        }
 
+        if ($element->TextColor && !$element->config()->get('hide_layout_option_text_color')) {
+            $holderClasses[] = 'tc--' . $element->TextColor;
+        }
         // Image
-        if($element->ImageOrientation && !$element->config()->get('hide_layout_option_image_orientation')) $holderClasses[] = 'io--' . $element->ImageOrientation;
-        if($element->ImageBrightness && !$element->config()->get('hide_layout_option_image_brightness')) $holderClasses[] = 'ib--' . $element->ImageBrightness;
-        if($element->ImageShape && !$element->config()->get('hide_layout_option_image_shape')) $holderClasses[] = 'is--' . $element->ImageShape;
+        if ($element->ImageOrientation && !$element->config()->get('hide_layout_option_image_orientation')) {
+            $holderClasses[] = 'io--' . $element->ImageOrientation;
+        }
 
+        if ($element->ImageBrightness && !$element->config()->get('hide_layout_option_image_brightness')) {
+            $holderClasses[] = 'ib--' . $element->ImageBrightness;
+        }
+
+        if ($element->ImageShape && !$element->config()->get('hide_layout_option_image_shape')) {
+            $holderClasses[] = 'is--' . $element->ImageShape;
+        }
         // Adds the style variant and extra class to the holder classes
-        if($element->getStyleVariant()) $holderClasses[] = $element->getStyleVariant();
-        if($element->ExtraClass) $holderClasses[] = $element->ExtraClass;
+        if ($element->getStyleVariant()) {
+            $holderClasses[] = $element->getStyleVariant();
+        }
+
+        if ($element->ExtraClass) {
+            $holderClasses[] = $element->ExtraClass;
+        }
 
         $this->owner->extend('updateHolderClasses', $holderClasses);
         return implode(' ', $holderClasses);

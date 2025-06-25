@@ -2,17 +2,20 @@
 
 namespace Pixelpoems\LayoutOptions\Extensions;
 
+use SilverStripe\Core\Extension;
 use Pixelpoems\LayoutOptions\Services\LayoutService;
 use Pixelpoems\SelectionField\CMSFields\SelectionField;
 use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\OptionsetField;
-use SilverStripe\ORM\DataExtension;
 
-class Image extends DataExtension
+class Image extends Extension
 {
+    public $owner;
     private static bool $hide_layout_option_image_orientation = false;
+
     private static bool $hide_layout_option_image_brightness = false;
+
     private static bool $hide_layout_option_image_shape = false;
 
 
@@ -70,8 +73,6 @@ class Image extends DataExtension
         $fields->addFieldsToTab('Root.' . _t('LayoutOptions.Layout', 'Layout'), [
             $compositeField
         ]);
-
-        parent::updateCMSFields($fields);
     }
 
     public function ImageShape(): string
@@ -79,7 +80,9 @@ class Image extends DataExtension
         $class = 'is--';
         if($this->owner->getField('ImageShape')) {
             $class .= $this->owner->getField('ImageShape');
-        } else $class .= 'default';
+        } else {
+            $class .= 'default';
+        }
 
 
         return $class;
