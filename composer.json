@@ -16,6 +16,12 @@
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/silverstripeltd/silverstripe-colorpalette"
+        }
+    ],
     "require": {
         "php": "^8.3",
         "silverstripe/cms": "^6.0",
